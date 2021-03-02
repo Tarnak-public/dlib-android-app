@@ -41,9 +41,11 @@ import android.hardware.camera2.CaptureResult;
 import android.hardware.camera2.TotalCaptureResult;
 import android.hardware.camera2.params.StreamConfigurationMap;
 import android.media.ImageReader;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.ActivityCompat;
 import android.util.Size;
 import android.util.SparseArray;
@@ -147,6 +149,7 @@ public class CameraConnectionFragment extends Fragment {
      * {@link android.hardware.camera2.CameraDevice.StateCallback}
      * is called when {@link CameraDevice} changes its state.
      */
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private final CameraDevice.StateCallback stateCallback =
             new CameraDevice.StateCallback() {
                 @Override
@@ -157,6 +160,7 @@ public class CameraConnectionFragment extends Fragment {
                     createCameraPreviewSession();
                 }
 
+                @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
                 @Override
                 public void onDisconnected(final CameraDevice cd) {
                     cameraOpenCloseLock.release();
@@ -168,6 +172,7 @@ public class CameraConnectionFragment extends Fragment {
                     }
                 }
 
+                @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
                 @Override
                 public void onError(final CameraDevice cd, final int error) {
                     cameraOpenCloseLock.release();

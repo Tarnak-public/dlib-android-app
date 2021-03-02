@@ -6,7 +6,7 @@ group = "com.tzutalin.dlib-android-app"
 
 android {
     compileSdkVersion rootProject.ext.androidCompileSdkVersion
-    buildToolsVersion "${rootProject.ext.androidBuildToolsVersion}"
+    buildToolsVersion "30.0.1"
 
     defaultConfig {
         minSdkVersion rootProject.ext.minSdkVersion
@@ -70,7 +70,7 @@ def GetNDKDir()  {
         localProperties.load(project.rootProject.file('local.properties').newDataInputStream())
         def ndkDir = localProperties.getProperty('ndk.dir')
         ndk_path = ndkDir != null ? ndkDir + lim : null;
-    } catch (java.io.FileNotFoundException e) {
+    } catch (FileNotFoundException e) {
         println 'local.properties file not found'
     }
 
